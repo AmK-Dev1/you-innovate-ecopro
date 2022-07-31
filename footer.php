@@ -10,9 +10,10 @@
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
             const lang = urlParams.get("lang");
-            if(lang == "ar"){
+            if(lang != "fr"){
                 $("body").css("text-align","right");  
                 $("body").css("direction","rtl");  
+                $("body").css("font-family","amiri")
             }
             
         get_history_e_view = (month_number , groupe_id_in_the_list)=>{
@@ -82,9 +83,10 @@
                         } else{
                             statu = "<?= $traduction['1']?>";
                         }
-
+                        
+                        
                         history_e_table_view +=    '<tr>'+
-                                                    '<td>'+month[j].Date+' a '+month[j].temps+'</td>'+
+                                                    '<td>'+month[j].Date+' <?= $traduction['a']?> '+month[j].temps.split(":").slice(0,2).join().replace(',',':')+'</td>'+
                                                     '<td>'+statu+'</td>'+
                                                 '</tr>' 
                     }
@@ -102,7 +104,7 @@
                         }
 
                     history_e_table_view +=    '<tr>'+
-                                                '<td>'+month[j].Date+' a '+month[j].temps+'</td>'+
+                                                '<td>'+month[j].Date+' <?= $traduction['a']?> '+month[j].temps.split(":").slice(0,2).join().replace(',',':')+'</td>'+
                                                 '<td>'+statu+'</td>'+
                                             '</tr>' 
                 }
@@ -209,7 +211,7 @@
 
                     history_p_view += '<tr>'+
                     '<td>'+history_p[i].Date+'</td>'+
-                    '<td>'+history_p[i].Somme+'</td>'+
+                    '<td>'+history_p[i].Somme+' <?= $traduction['dzd']?> </td>'+
                 '</tr>'
                     }
                 }

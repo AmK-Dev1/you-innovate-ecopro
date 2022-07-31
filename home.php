@@ -52,7 +52,7 @@ include('header.php');
                     
                 <!-- Groupes -->
                 <section id="grps">
-                    <h4><?=$traduction['groupes']?> :</h4>
+                    <h4 class="title"><?=$traduction['groupes']?> :</h4>
                     <nav id="groupes_buttons" class="d-flex flex-wrap flex-grow">
                             <!-- buttons by Jquerry -->
                     </nav>
@@ -115,7 +115,7 @@ include('header.php');
 
                     <h4><?= $traduction['historique_paiement']?> : </h4>
                     <ul>
-                        <li id="fraisinsc"><?= $traduction['frais_pas_encore']?></li>
+                        <li id="fraisinsc"><strong><?= $traduction['frais_pas_encore']?></strong> </li>
                     </ul>
 
                     <div class="table-responsive">

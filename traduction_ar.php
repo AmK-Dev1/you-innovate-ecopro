@@ -23,13 +23,14 @@ $traduction = [
     'dzd_mois'=> "دينار جزائري / الشهر",
     'absence_presence'=>"الحضور / الغياب",
     'frais_pas_encore'=>"رسوم التسجيل: لم يتم استلامها بعد",
-    'paiement_par_groupe' => "الدفع لكل مجموعة",
+    'paiement_par_groupe' => "اثبات الدفع",
     'montant'=>"المبلغ",
     'mois'=>"الشهر",
     'tous_les_mois'=>"كل الشهور",
     'frais_de_inscription'=>"رسوم التسجيل",
     'dzd_le' => "دينار جزائري يوم",
-    /*  */
+    'dzd'=>"دج",    /*  */
+    'a'=>'على',
 
     'missing_values' => "معلومات غير مكتملة",
     'wrong_informations' => "معلومات خاطئة",

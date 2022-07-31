@@ -1,7 +1,14 @@
+@import url(https://fonts.googleapis.com/earlyaccess/amiri.css);
+
 *{
     box-sizing: border-box;
+    font-size: 1.2rem;
 }
 
+
+.title{
+    margin-bottom: 1rem;
+}
 /* for breadcumb */
 .sticky {
     position: fixed;

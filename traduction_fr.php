@@ -19,7 +19,7 @@ $traduction = [
     'nbr_seances_mois'=>"Nombre de séances par mois",
     'prof'=>"Enseignant",
     'prix'=>"Montant",
-    'seances_restante'=>"Le nombre de séances restantes",
+    'seances_restante'=>"Séances restantes",
     'dzd_mois'=> "Dzd / mois",
     'absence_presence'=>"Présence / Absence",
     'frais_pas_encore'=>"Frais d'inscription : Pas encore reçus",
@@ -29,7 +29,10 @@ $traduction = [
     'tous_les_mois'=>"Tous les mois",
     'frais_de_inscription'=>"Frais d'inscription",
     'dzd_le' => "Dzd le ",
+    'dzd'=>"DZD",
     /*  */
+
+    'a'=>"a",
 
     'missing_values' => "Informations incomplètes",
     'wrong_informations' => "Informations incorrectes",
