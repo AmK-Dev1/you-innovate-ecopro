@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/earlyaccess/amiri.css);
 
+
 *{
     box-sizing: border-box;
     font-size: 1.2rem;
@@ -36,14 +37,23 @@
     cursor: pointer;
     padding: 10px;
     border-radius: 50%;
-  }
+}
+
   
 #myBtn i{
-    color: #6dbbff;
+    color: rgba(255, 255, 255, 0.581);
+    background-color: #6dbbff90;
+    padding: 0.8rem;
+    border-radius: 50%;
 }
-  #myBtn:hover i {
-    color: #0275d8;
-  }
+
+
+#myBtn i:hover{
+    background-color: red;
+    
+color: rgba(255, 255, 255, 1);
+background-color: #6dbbff;
+}
 
 
 
