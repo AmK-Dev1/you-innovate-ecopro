@@ -2,7 +2,7 @@
 require "connection.php";
 if(!$con){
     die("Connection failed :" . mysqli_connect_error());
-  }
+}
 
   if( 
     isset($_GET['student_id']) &&
@@ -50,8 +50,9 @@ if(!$con){
                 $history_p[]=$row_2;
             }
 
-            // GET comments 
-            $query_5 = mysqli_query($con,"SELECT idCommentaireEleve, `Message` , `Date` , DateLu ,heureLu  FROM commentaireeleve  WHERE  idEleve= '".$student_id."' AND idGroupe= '".$groupe_id."'" );
+            // GET comments  BY GROUPE AND GLOBAL COMMENTS WITH ID = 0
+            $query_5 = mysqli_query($con,"SELECT idCommentaireEleve, `Message` , `Date` , DateLu ,heureLu  FROM commentaireeleve  WHERE  idEleve= '".$student_id."' AND ( idGroupe= '".$groupe_id."' OR idGroupe='0' ) " );
+
 
             $comments = [];
             while($row_3 = mysqli_fetch_assoc($query_5)){
@@ -70,7 +71,6 @@ if(!$con){
             
             $resultat[] = $row;   
         }
-
 
     }
 

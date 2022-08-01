@@ -197,34 +197,5 @@ include('header.php');
 
 
 <?php 
-include('footer.php')
+include('footer.php');
 ?>
-
-<script>
-
-const user = JSON.parse(localStorage.getItem('user'));
-                $.ajax({
-                            data:{
-                                'student_id':user.idEleve
-                            },
-                            type: 'GET',
-                            url : 'functions/get_groupes.php',
-                        
-                            success: function(res){
-                                    const groupes = JSON.parse(res);
-                                    //Save Results : 
-                                    localStorage.setItem('groupes',JSON.stringify(groupes));
-                                    
-                                    //4) disable spinner and show view
-                                    $('#main_spinner').removeClass('d-flex');
-                                    $('#main_spinner').addClass('d-none');
-
-                                    $('#main_content').removeClass('d-none');
-
-                                    // by default set view of the first groupe on the list
-                                    localStorage.setItem('selected_groupe',0)
-                                    set_view(0);
-                            },
-                        });  
-
-</script>

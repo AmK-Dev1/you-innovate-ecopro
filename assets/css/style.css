@@ -118,3 +118,9 @@ background-color: #6dbbff;
     outline: 0px !important;
 }
 
+footer{
+    position: relative;
+    font-family: Arial, Helvetica, sans-serif !important;
+    direction: ltr !important;
+    text-align: center !important;
+}

@@ -1,16 +1,10 @@
 <?php
 
-/* define('DB_HOST','192.168.1.41');
-define('DB_USER','PC2');
-define('DB_PASSWORD','');
-define('DB_NAME','ecole');
-  */
 
 define('DB_HOST','iqraa05yi.ddns.net');
 define('DB_USER','PC2');
 define('DB_PASSWORD','');
 define('DB_NAME','ecole');
- 
 
 
 function connect()
