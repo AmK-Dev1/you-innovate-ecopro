@@ -312,11 +312,22 @@
                     
                         success: function(res){
 
-                                res = JSON.parse(res)                          
+                                res = JSON.parse(res)  
                                 if(res.status === 200){
                                     localStorage.setItem('user',JSON.stringify(res.data));
                                     /* Redirect */
-                                    window.location.href = 'home.php?lang='+lang+'';
+
+                                    /* Comments 'VU' */
+                                    /* $.ajax({
+                                        data:{'student_id':res.data.idEleve},
+                                        type: 'POST',
+                                        url: 'functions/comments.php',
+                                        success:(res)=>{
+                                            console.log(res)
+                                        }
+
+                                    }) */
+                                     window.location.href = 'home.php?lang='+lang+'';
                                 
                                 }else{
                                     alert("<?= $traduction['wrong_informations']?>")
