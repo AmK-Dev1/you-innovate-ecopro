@@ -6,6 +6,10 @@
     font-size: 1.2rem;
 }
 
+body{
+    width: 100% !important;
+}
+
 
 .title{
     margin-bottom: 1rem;

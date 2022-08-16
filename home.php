@@ -7,6 +7,7 @@ include('header.php');
 <script>
     check_2 = ()=>{
         if(!localStorage.getItem('user')){
+            localStorage.clear();
             window.location.href = "index.php";
         }
     }
@@ -15,7 +16,7 @@ include('header.php');
 
 
 <!-- Main Content -->
-<div class="container-fluid px-0">
+<div class="container-fluid px-0 mx-0">
 
     <div id="main_content" class="d-none">
         <header class="p-4 bg-primary">
@@ -48,7 +49,7 @@ include('header.php');
     
 
         <div id="second_content">
-            <div class="container p-1">
+            <div class="container">
                     
                 <!-- Groupes -->
                 <section id="grps">

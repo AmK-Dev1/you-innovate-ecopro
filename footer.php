@@ -1,11 +1,11 @@
 
-<footer class="d-flex flex-column justify-content-center text-white align-items-center py-2 bg-primary mt-5 border-top">
+<footer class="d-flex flex-column fixed-bottom justify-content-center text-white align-items-center py-2 bg-primary mt-5 border-top">
 <img src="assets/images/youinnovate.png" width="30" height="40" >
     <p class="">©YOUINNOVATE 2022</p>
 
 </footer>
     
-    
+
     
     <!-- For container --> 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -13,6 +13,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
 
     <script>
+        // GLOBAL VARIABLE TO CHECK IF COMMENTS ARE SEEN
+        let is_comments_seen = false;   
+
         $(document).ready(()=>{
 
 
@@ -129,8 +132,8 @@
 
             set_view = (groupe_id_in_the_list)=>{
 
-                localStorage.setItem('selected_groupe',groupe_id_in_the_list)
 
+                localStorage.setItem('selected_groupe',groupe_id_in_the_list)
                 $('#second_content').addClass('d-none');
                 $('#second_spinner').addClass('d-flex');
                 $('#second_spinner').removeClass('d-none');
@@ -246,6 +249,7 @@
                     $('#second_spinner').addClass('d-none');
                     $('#second_content').removeClass('d-none');
                 },300)
+
             };
 
             /* GET Data */
@@ -261,6 +265,7 @@
                         url : 'functions/get_groupes.php',
 
                         success: function(res){
+
                                 const groupes = JSON.parse(res);
                                 //Save Results : 
                                 localStorage.setItem('groupes',JSON.stringify(groupes));
@@ -317,16 +322,6 @@
                                     localStorage.setItem('user',JSON.stringify(res.data));
                                     /* Redirect */
 
-                                    /* Comments 'VU' */
-                                    /* $.ajax({
-                                        data:{'student_id':res.data.idEleve},
-                                        type: 'POST',
-                                        url: 'functions/comments.php',
-                                        success:(res)=>{
-                                            console.log(res)
-                                        }
-
-                                    }) */
                                      window.location.href = 'home.php?lang='+lang+'';
                                 
                                 }else{
@@ -357,6 +352,7 @@
 <!-- Down to Up button + Scrol trriger -->
 <script>
 
+
     //Get the button
     var mybutton = document.getElementById("myBtn");
     var comments_element = document.getElementById('c'); 
@@ -368,8 +364,22 @@
 
         /* Check if comments are in viewport */
         if(isInViewport(comments_element)){
-            // In this case user has seen comments section
+            const comments = JSON.parse(localStorage.getItem('groupes'))[parseInt(localStorage.getItem('selected_groupe'))].comments;
+            //check comments if they are seen or not 
+            for (let i = 0; i < comments.length; i++) {
+                const comment = comments[i];
+                if(comment.DateLu == ""){
+                    $.ajax({
+                            data:{'comment_id':comment.idCommentaireEleve},
+                            type: 'POST',
+                            url: 'functions/comments.php',
+                            success:(res)=>{
+                                console.log(res)
+                            }
 
+                                    })
+                }
+            }
         }
 
     };
