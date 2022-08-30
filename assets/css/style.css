@@ -128,3 +128,9 @@ footer{
     direction: ltr !important;
     text-align: center !important;
 }
+
+#c thead{
+    position: sticky;
+    top: 0px;
+    z-index: 990;
+}

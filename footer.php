@@ -1,7 +1,7 @@
 
-<footer class="d-flex flex-column fixed-bottom justify-content-center text-white align-items-center py-2 bg-primary mt-5 border-top">
+<footer class="d-flex flex-column justify-content-center text-white align-items-center py-2 bg-primary mt-5 border-top">
 <img src="assets/images/youinnovate.png" width="30" height="40" >
-    <p class="">©YOUINNOVATE 2022</p>
+    <p class="">© YOUINNOVATE</p>
 
 </footer>
     
@@ -219,15 +219,42 @@
 
                 // comments 
                 const comments = groupe.comments;
+                const glob_comments = groupe.glob_comments;
 
                 let comments_view = "";
+                let comments_glob_view = "";
+
                 for (let i = 0; i < comments.length; i++) {
                     const comment = comments[i];
-                    comments_view +=    '<tr>'+
-                                            '<td>'+comment.Date+'</td>'+
-                                            '<td>'+comment.Message+'</td>'+
-                                        '</tr>'
+                    if(comment.DateLu){
+                        comments_view +=    '<tr>'+
+                                                '<td style="white-space: nowrap;">'+comment.Date+'</td>'+
+                                                '<td>'+comment.Message+'</td>'+
+                                            '</tr>'
+                    }else{
+                        comments_view +=    '<tr ">'+
+                                                '<td style="white-space: nowrap;"><strong >'+comment.Date+'</strong></td>'+
+                                                '<td><strong>'+comment.Message+'</strong></td>'+
+                                            '</tr>'
+                    }
                 }
+                /* global comments  */
+                for (let i = 0; i < glob_comments.length; i++) {
+                    const comment = glob_comments[i];
+
+                    if(comment.DateLu){
+                        comments_glob_view +=    '<tr>'+
+                                                '<td style="white-space: nowrap;">'+comment.Date+'</td>'+
+                                                '<td>'+comment.Message+'</td>'+
+                                            '</tr>'
+                    }else{
+                        comments_glob_view +=    '<tr ">'+
+                                                '<td><strong style="white-space: nowrap;">'+comment.Date+'</strong></td>'+
+                                                '<td><strong>'+comment.Message+'</strong></td>'+
+                                            '</tr>'
+                    }
+                }
+                
 
 
                 // SET Data
@@ -236,6 +263,7 @@
                 $('#grp_infos').html(groupe_infos);
                 $('#history_p_view').html(history_p_view);
                 $('#comments_view').html(comments_view);
+                $('#comments_glob_view').html(comments_glob_view);
 
                 // Set frais d'incription
                 const frais = JSON.parse(localStorage.getItem('user')).fraiinsc ;
@@ -364,11 +392,16 @@
 
         /* Check if comments are in viewport */
         if(isInViewport(comments_element)){
-            const comments = JSON.parse(localStorage.getItem('groupes'))[parseInt(localStorage.getItem('selected_groupe'))].comments;
+            let comments = JSON.parse(localStorage.getItem('groupes'))[parseInt(localStorage.getItem('selected_groupe'))].comments;
+            const glob_comments = JSON.parse(localStorage.getItem('groupes'))[parseInt(localStorage.getItem('selected_groupe'))].glob_comments;
+            for (let x = 0; x < glob_comments.length; x++) {
+                comments.push(glob_comments[x])
+            }
+
             //check comments if they are seen or not 
             for (let i = 0; i < comments.length; i++) {
                 const comment = comments[i];
-                if(comment.DateLu == ""){
+                if(!comment.DateLu || !comment.HeureLu){
                     $.ajax({
                             data:{'comment_id':comment.idCommentaireEleve},
                             type: 'POST',

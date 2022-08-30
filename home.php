@@ -149,18 +149,39 @@ include('header.php');
                 <hr>
 
                 <section id="c" class="mt-4" style="padding-bottom: 4rem;">
-                    <h4><?=$traduction['commentaires']?> : </h4>
+                    <h4><?=$traduction['c']?> : </h4>
 
                     <div class="table-responsive">
                         
-                        <table class="table table-bordered">
+                        <table class="table table-bordered" style="overflow-wrap: anywhere;">
                             <thead>
                                 <tr>
-                                <td scope="col" colspan="2" class="text-center bg-warning text-white"><?=$traduction['commentaires']?></th>
+                                <td scope="col" colspan="2" class="text-center bg-warning text-white p-0"><?=$traduction['commentaires']?></th>
                                 </tr>
                             </thead>
 
                             <tbody id="comments_view">
+                                <!-- BY JS -->
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                    <div class="my-4">
+                        <hr>
+                    </div>
+
+                    <div class="table-responsive" style="overflow-wrap: anywhere;">
+                         
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                <td scope="col" colspan="2" class="text-center bg-warning text-white p-0"><?=$traduction['commentaires_glo']?></th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="comments_glob_view">
                                 <!-- BY JS -->
                             </tbody>
 

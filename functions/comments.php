@@ -8,9 +8,11 @@ if(isset($_POST['comment_id'])){
 
 $comment_id = $_POST['comment_id'];
 
-$date = date('d-m-y');
+$dt = new DateTime("now", new DateTimeZone('Africa/Algiers'));
 
-$heure = date("h:i");
+$date = $dt -> format("Y-m-d"); 
+$heure = $dt -> format("H:i");
+
 
 $query = "UPDATE commentaireeleve SET DateLu='".$date."',heureLu='".$heure."' WHERE  idCommentaireEleve= '".$comment_id."'";
 

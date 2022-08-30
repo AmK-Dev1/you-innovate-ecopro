@@ -7,7 +7,10 @@ $traduction = [
     'groupes' => "Groupes",
     'historique_eleve'=>"Historique de présence",
     'historique_paiement'=>"Historique de paiement",
-    'commentaires'=>"Commentaires",
+    'c'=>"Commentaires",
+    'commentaires'=>"Commentaires du groupe",
+    'commentaires_glo'=>"Commentaires globales",
+
     'logout'=>"Se déconnecter",
 
     /*  */

@@ -7,7 +7,10 @@ $traduction = [
     'groupes' => "المجموعات",
     'historique_eleve'=>"سجل الحضور",
     'historique_paiement'=>"سجل الدفع",
-    'commentaires'=>"ملاحظات",
+    'c'=>"ملاحظات",
+    'commentaires'=>"ملاحظات المجموعة",
+    'commentaires_glo'=>"ملاحظات عامة",
+
     'logout'=>"تسجيل الخروج",
 
     /*  */

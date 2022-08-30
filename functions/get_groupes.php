@@ -27,10 +27,10 @@ if(!$con){
         
         $groupe_id = $inscription['idGroupe'];
 
-        $query_2 = mysqli_query($con,"  SELECT groupe.idGroupe, groupe.Designation, Module.Designation Module,Enseignat.Nom Enseignat,Niveau.Designation Niveau, groupe.Jour , groupe.Heure , groupe.Salle , groupe.NombreSeance , groupe.MontantTotal
+        $query_2 = mysqli_query($con,"  SELECT groupe.idGroupe, groupe.Designation, Module.Designation Module,Employe.Nom Enseignat,Niveau.Designation Niveau, groupe.Jour , groupe.Heure , groupe.Salle , groupe.NombreSeance , groupe.MontantTotal
                                         FROM (((groupe
                                         INNER JOIN Module ON groupe.idModule = Module.idModule)
-                                        INNER JOIN Enseignat ON groupe.idEnseignat = Enseignat.idEnseignat)
+                                        INNER JOIN Employe ON groupe.idEmploye = Employe.idEmploye)
                                         INNER JOIN Niveau ON groupe.idNiveau = Niveau.idNiveau) WHERE groupe.idGroupe='".$groupe_id."';");
         // while (par groupe)
         while($row = mysqli_fetch_assoc($query_2)){
@@ -51,12 +51,17 @@ if(!$con){
             }
 
             // GET comments  BY GROUPE AND GLOBAL COMMENTS WITH ID = 0
-            $query_5 = mysqli_query($con,"SELECT idCommentaireEleve, `Message` , `Date` , DateLu ,heureLu  FROM commentaireeleve  WHERE  idEleve= '".$student_id."' AND ( idGroupe= '".$groupe_id."' OR idGroupe='0' ) " );
-
+            $query_5 = mysqli_query($con,"SELECT idCommentaireEleve, `Message` , `Date` , DateLu ,heureLu  FROM commentaireeleve  WHERE  idEleve= '".$student_id."' AND idGroupe= '".$groupe_id."' ORDER BY  isnull(dateLu) desc , date DESC , idCommentaireEleve DESC " );
+            $query_5_1 = mysqli_query($con,"SELECT idCommentaireEleve, `Message` , `Date` , DateLu ,heureLu  FROM commentaireeleve  WHERE  idEleve= '".$student_id."' AND isnull(idGroupe) ORDER BY isnull(dateLu) desc , date DESC,idCommentaireEleve DESC " );
 
             $comments = [];
+            $glob_comments = [];
+
             while($row_3 = mysqli_fetch_assoc($query_5)){
                 $comments[]=$row_3;
+            }
+            while($row_3_1 = mysqli_fetch_assoc($query_5_1)){
+                $glob_comments[]=$row_3_1;
             }
         
 
@@ -68,6 +73,8 @@ if(!$con){
             $row['history_p'] = $history_p;
             // add comments to the row
             $row['comments'] = $comments;
+
+            $row['glob_comments'] = $glob_comments;
             
             $resultat[] = $row;   
         }
